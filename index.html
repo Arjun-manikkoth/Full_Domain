@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .parent {
+      background-color: green;
+      height: 600px;
+      width: 600px;
+    }
+
+    .child {
+      background-color: brown;
+      height: 500px;
+      width: 500px;
+    }
+
+    .child1-1 {
+      background-color: red;
+      height: 400px;
+      width: 400px;
+    }
+
+    .child1-2 {
+      background-color: blue;
+      height: 300px;
+      width: 300px;
+    }
+
+    .child1-3 {
+      background-color: yellow;
+      height: 200px;
+      width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="parent" id="parent">
+    parent
+    <div class="child" id="child">child1
+      <div class="child1-1" id="child1-1">
+        child1-1
+        <div class="child1-2" id="child1-2">
+          child1-2
+          <div class="child1-3" id="child1-3">
+            child1-3
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const parent = document.getElementById('parent')
+    const child = document.getElementById('child')
+    const child11 = document.getElementById('child1-1')
+    const child12 = document.getElementById('child1-2')
+    const child13 = document.getElementById('child1-3')
+    parent.addEventListener('click', () => {
+      console.log("parent")
+    }, { capture: true })
+    child.addEventListener('click', () => {
+      console.log("child")
+    }, { capture: true })
+    child11.addEventListener('click', (e) => {
+      console.log("child11")
+      e.stopPropagation()
+    }, { capture: true })
+    child12.addEventListener('click', () => {
+      console.log("child12")
+    }, { capture: true })
+    child13.addEventListener('click', () => {
+      console.log("child13")
+    }, { capture: true })
+  </script>
+</body>
+
+</html>
